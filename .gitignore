@@ -1,0 +1,41 @@
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Directorios de entorno y configuración
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Archivos de logs
+logs
+*.log
+logs/*.log
+
+# Caché de dependencia
+.cache/
+
+# Archivos del editor
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Archivos de build y cobertura
+/dist/
+/build/
+/coverage/
+
+# Archivos temporales
+*.swp
+*.swo
+
+# Configuración de despliegue
+/.pm2
+/.nuxt
+/.vercel
+/.netlify
