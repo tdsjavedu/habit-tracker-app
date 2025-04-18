@@ -10,11 +10,19 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://habits-tracker-app-brown.vercel.app', // Cambia esto por la URL de tu frontend
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  exposedHeaders: ["habitToken"],
+  credentials: true, // Permitir cookies
+  maxAge: 3600 // Opcional: tiempo en segundos para el preflight cache
+  
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -38,7 +46,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({'error':err});
 });
 
 
